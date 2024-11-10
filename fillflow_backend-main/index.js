@@ -30,11 +30,13 @@ const productMappingRoutes = require('./routes/productMapping.routes');
 const outwardedProductsRoutes = require('./routes/outwardedProducts.routes');
 
 app.use(bodyParser.json());
-app.use(cors({
-  origin:["https://fillflow-frontend.vercel.app/login"],
-  methods: ["POST", "GET"],
-  credentials: true
-}));
+// app.use(cors({
+//   origin:["https://fillflow-frontend.vercel.app/login"],
+//   methods: ["POST", "GET"],
+//   credentials: true
+// }));
+
+app.use(cors());
 
 // calling routes here
 warehouseRoutes(app);
