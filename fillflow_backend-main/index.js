@@ -31,7 +31,7 @@ const outwardedProductsRoutes = require('./routes/outwardedProducts.routes');
 
 app.use(bodyParser.json());
 app.use(cors({
-  origin:["https://fillflow-frontend.vercel.app/"],
+  origin:["https://fillflow-backend.vercel.app/"],
   methods: ["POST", "GET"],
   credentials: true
 }));
