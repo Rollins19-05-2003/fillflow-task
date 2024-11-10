@@ -1,0 +1,2 @@
+The b2b po is now shifted as bulk raw material outward
+and the custom order thing is now b2b order

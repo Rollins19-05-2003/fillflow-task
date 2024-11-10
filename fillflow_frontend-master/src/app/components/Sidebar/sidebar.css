@@ -1,0 +1,13 @@
+/* Add this CSS to your stylesheet */
+.scroll_width::-webkit-scrollbar {
+  width: 2px; /* adjust width as needed */
+  background-color: #f8f6f2;
+}
+
+/* For Firefox */
+.scroll_width {
+  scrollbar-width: 1px; /* adjust width as needed */
+  /* thumb color, track color */
+  scrollbar-color: rgb(181, 176, 161);
+  background-color: #f8f6f2;
+}
