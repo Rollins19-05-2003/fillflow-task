@@ -3,7 +3,10 @@
 // Staging Database - 
 // export const BASE_URL ='https://fillflow-backend-mofdh.ondigitalocean.app/api/v1';
 // Prod Database -
-export const BASE_URL = "https://urchin-app-44s76.ondigitalocean.app/api/v1";
+// export const BASE_URL = "https://urchin-app-44s76.ondigitalocean.app/api/v1";
+
+// my vercel backend url
+export const BASE_URL = "https://fillflow-backend.vercel.app/";
 
 
 import axios from 'axios';
