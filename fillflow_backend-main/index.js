@@ -71,24 +71,24 @@ console.log("Connecting to MongoDB with URI:", process.env.MONGO_URL);
 // Test MongoDB connection route
 app.get('/api/test-db', async (req, res) => {
   try {
+    if (mongoose.connection.readyState !== 1) {
+      throw new Error('Database not connected');
+    }
     const result = await mongoose.connection.db.admin().ping();
     res.send({ message: 'Connected to MongoDB', result });
   } catch (error) {
-    console.error("MongoDB connection error:", error);
+    console.error('Test DB connection error:', error);
     res.status(500).send({ error: 'Failed to connect to MongoDB', details: error.message });
   }
 });
 
+
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
-  mongoose.connect(process.env.MONGO_URL).then(
-    () => {
-      console.log("Mongodb connected...");
-      // cronJob.start();
-    },
-
-    (err) => {
-      console.log("Error occurred:", err);
-    }
-  );
+  mongoose.connect(process.env.MONGO_URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => console.log('Successfully connected to MongoDB'))
+  .catch((error) => console.error('Error connecting to MongoDB:', error));  
 });
