@@ -65,6 +65,16 @@ app.get("/", (req, res) => {
   res.send("Hello!");
 });
 
+// Test MongoDB connection route
+app.get('/api/test-db', async (req, res) => {
+  try {
+    const result = await mongoose.connection.db.admin().ping();
+    res.send({ message: 'Connected to MongoDB', result });
+  } catch (error) {
+    res.status(500).send({ error: 'Failed to connect to MongoDB', details: error });
+  }
+});
+
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
   mongoose.connect(process.env.MONGO_URL).then(
