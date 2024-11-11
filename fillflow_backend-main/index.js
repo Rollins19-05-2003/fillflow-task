@@ -66,7 +66,7 @@ app.get("/", (req, res) => {
 });
 
 mongoose.set('debug', true);
-console.log("Connecting to MongoDB with URI:", process.env.MONGO_URL);
+console.log("Connecting to MongoDB with URI:", process.env.MONGODB_URI);
 
 // Test MongoDB connection route
 app.get('/api/test-db', async (req, res) => {
@@ -85,7 +85,7 @@ app.get('/api/test-db', async (req, res) => {
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
-  mongoose.connect(process.env.MONGO_URL, {
+  mongoose.connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
