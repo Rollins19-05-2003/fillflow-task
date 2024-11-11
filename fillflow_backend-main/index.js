@@ -65,13 +65,17 @@ app.get("/", (req, res) => {
   res.send("Hello!");
 });
 
+mongoose.set('debug', true);
+console.log("Connecting to MongoDB with URI:", process.env.MONGO_URL);
+
 // Test MongoDB connection route
 app.get('/api/test-db', async (req, res) => {
   try {
     const result = await mongoose.connection.db.admin().ping();
     res.send({ message: 'Connected to MongoDB', result });
   } catch (error) {
-    res.status(500).send({ error: 'Failed to connect to MongoDB', details: error });
+    console.error("MongoDB connection error:", error);
+    res.status(500).send({ error: 'Failed to connect to MongoDB', details: error.message });
   }
 });
 
